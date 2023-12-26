@@ -12,7 +12,7 @@ let aContainer = document.querySelector("#a-container");
 let bContainer = document.querySelector("#b-container");
 let allButtons = document.querySelectorAll(".submit");
 
-let getButtons = (e) => e.preventDefault()
+//let getButtons = (e) => e.preventDefault()
 
 let changeForm = (e) => {
 
@@ -32,9 +32,26 @@ let changeForm = (e) => {
     bContainer.classList.toggle("is-z200");
 }
 
+//// 添加异步更新的
+//let refresh = (e) => {
+//      $.ajax({
+//        url: "{% url 'log_in' %}",  // 指定处理AJAX请求的URL
+//        type: 'POST',  // 请求类型为POST
+//        data: {},  // 可选的请求数据
+//        success: function(response) {
+//          // 在成功接收到响应时执行的回调函数
+//          // 更新页面上的数据或执行其他操作
+//        },
+//        error: function(xhr, status, error) {
+//          // 在请求失败时执行的回调函数
+//          }
+//        });
+//      }
+//}
+
 let mainF = (e) => {
-    for (var i = 0; i < allButtons.length; i++)
-        allButtons[i].addEventListener("click", getButtons );
+//    for (var i = 0; i < allButtons.length; i++)
+//        allButtons[i].addEventListener("click", getButtons);
     for (var i = 0; i < switchBtn.length; i++)
         switchBtn[i].addEventListener("click", changeForm)
 }
