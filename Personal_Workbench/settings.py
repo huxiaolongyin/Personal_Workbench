@@ -72,15 +72,22 @@ WSGI_APPLICATION = 'Personal_Workbench.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
+# Mysql
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'Personal_Workbench',  # 数据库名称
+#         'USER': 'PWadmin',  # 用户名
+#         'PASSWORD': '123456',  # 密码
+#         'HOST': 'localhost',  # 数据库地址
+#         'POST': 3306  # 端口号
+#     }
+# }
+# 暂时用sqlite3
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Personal_Workbench',  # 数据库名称
-        'USER': 'PWadmin',  # 用户名
-        'PASSWORD': '123456',  # 密码
-        'HOST': 'localhost',  # 数据库地址
-        'POST': 3306  # 端口号
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
