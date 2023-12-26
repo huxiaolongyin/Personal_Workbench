@@ -1,8 +1,7 @@
 from django.contrib import messages
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.http import HttpResponse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 
 def log_in(request):
@@ -43,14 +42,21 @@ def log_in(request):
             messages.error(request, '注册成功!')  # 注册成功后的逻辑，例如重定向到登录页面
 
         elif 'login' in request.POST:
+
             login_name = request.POST['login_name']
             login_pwd = request.POST['login_pwd']
-            user = authenticate(request, username=login_name, password=login_pwd)
+            user = authenticate(username=login_name, password=login_pwd)
             if user is not None:
                 login(request, user)
-                return HttpResponse('登录成功')
+                return redirect('/index/')
             else:
                 error_message = '无效的用户名或密码'
                 return render(request, 'login.html', {'error_message2': error_message})
 
     return render(request, 'login.html')
+
+
+# 登出
+def log_out(request):
+    logout(request)
+    return redirect('/account/login/')
