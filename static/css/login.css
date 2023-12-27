@@ -102,6 +102,9 @@ body {
 .error{
     color: #f10000;
     padding-left: 25px;
+    text-align:center;
+    font-size: 12px;
+
 }
 .form__span {
   margin-top: 30px;
@@ -109,10 +112,13 @@ body {
 }
 .form__link {
   color: #181818;
-  font-size: 15px;
-  margin-top: 25px;
-  border-bottom: 1px solid #a0a5a8;
+  font-size: 13px;
+  margin-top: 20px;
   line-height: 2;
+  cursor: pointer;
+}
+.form__link:hover {
+  color: #0883d8;
 }
 .title {
   font-size: 34px;
@@ -140,20 +146,7 @@ body {
   box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #f9f9f9;
   border: none;
   outline: none;
-}
-.btn {
-  width: 180px;
-  height: 50px;
-  border-radius: 25px;
-  margin-top: 50px;
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 1.15px;
-  background-color: #4B70E2;
-  color: #f9f9f9;
-  box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #f9f9f9;
-  border: none;
-  outline: none;
+  cursor: pointer;
 }
 
 /**/
@@ -208,9 +201,7 @@ body {
   padding: 50px 55px;
   transition: 2s;
 }
-.switch__button {
-  cursor: pointer;
-}
+
 .switch__button:hover {
   box-shadow: 6px 6px 10px #d1d9e6, -6px -6px 10px #f9f9f9;
   transform: scale(0.985);

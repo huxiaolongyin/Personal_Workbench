@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 
 def log_in(request):
     # 采用模板的方式
+    print(request.POST)
     if request.method == 'POST':
         if 'register' in request.POST:
             username = request.POST['username']
@@ -42,8 +43,7 @@ def log_in(request):
             user.save()
             messages.error(request, '注册成功!')  # 注册成功后的逻辑，例如重定向到登录页面
 
-        elif 'login' in request.POST:
-
+        else:
             login_name = request.POST['login_name']
             login_pwd = request.POST['login_pwd']
             user = authenticate(username=login_name, password=login_pwd)
@@ -52,7 +52,9 @@ def log_in(request):
                 return redirect('/index/')
             else:
                 error_message = '无效的用户名或密码'
-                return render(request, 'login.html', {'error_message2': error_message})
+                print(JsonResponse({'error': error_message}))
+                return JsonResponse({'error': error_message})
+                # return render(request, 'login.html', {'error_message2': error_message})
 
     return render(request, 'login.html')
 
@@ -61,3 +63,7 @@ def log_in(request):
 def log_out(request):
     logout(request)
     return redirect('/account/login/')
+
+
+def forgot_pwd(request):
+    return render(request, 'forgot_pwd.html')

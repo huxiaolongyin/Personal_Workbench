@@ -2,11 +2,15 @@
 {% load static %}
 <html lang="es" dir="ltr">
   <head>
-    <meta name="viewport" content="width=device-width, user-scalable=no, 	initial-scale=1.0">
+    <title>个人工作台登录</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!--    <script>-->
+
+<!--    </script>-->
   </head>
   <body>
     <div class="main">
@@ -18,7 +22,7 @@
           <input class="form__input" type="password" name="password" placeholder="密码">
           <input class="form__input" type="password" name="password2" placeholder="再次输入密码">
           <div class="error">{{ error_message }}</div>
-          <input type="submit" class='btn' name="register" value="注册">
+          <input type="submit" class='button' id="register" name="register" value="注册">
 <!--          <button class="form__button button submit" type="submit">注册</button>-->
         </form>
       </div>
@@ -29,10 +33,10 @@
           <div class="form__icons"></div>
           <input class="form__input" type="text" name="login_name" placeholder="用户名">
           <input class="form__input" type="password" name="login_pwd" placeholder="密码">
-          <div class="error" id='error-message'>{{ error_message2 }}</div>
-          <a class="form__link">忘记密码?</a>
-          <input type="submit" class='btn' name="login" value="登录">
-<!--          <button class="form__button button submit" name="login">登录</button>-->
+          <div class="error" id='login_message'></div>
+          <a class="form__link" href="{% url 'forgot_pwd' %}">忘记密码？</a>
+<!--          <input type="submit" class='button submit' id="login" name="login" value="登录">-->
+          <button class="form__button button submit" id="login" name="login">登录</button>
         </form>
       </div>
       <div class="switch" id="switch-cnt">
@@ -41,12 +45,12 @@
         <div class="switch__container" id="switch-c1">
           <h2 class="switch__title title">你好，新用户！</h2>
           <p class="switch__description description">输入你的手机号和密码，并等待管理员审核</p>
-          <button class="switch__button button switch-btn">进入登录页</button>
+          <button class="button switch-btn">进入登录页</button>
         </div>
         <div class="switch__container is-hidden" id="switch-c2">
           <h2 class="switch__title title">欢迎回来 !</h2>
           <p class="switch__description description">使用个人手机号及密码进行登录</p>
-          <button class="switch__button button switch-btn">进入注册页</button>
+          <button class="button switch-btn">进入注册页</button>
         </div>
       </div>
     </div>

@@ -12,7 +12,7 @@ let aContainer = document.querySelector("#a-container");
 let bContainer = document.querySelector("#b-container");
 let allButtons = document.querySelectorAll(".submit");
 
-//let getButtons = (e) => e.preventDefault()
+let getButtons = (e) => e.preventDefault()
 
 let changeForm = (e) => {
 
@@ -32,22 +32,6 @@ let changeForm = (e) => {
     bContainer.classList.toggle("is-z200");
 }
 
-//// 添加异步更新的
-//let refresh = (e) => {
-//      $.ajax({
-//        url: "{% url 'log_in' %}",  // 指定处理AJAX请求的URL
-//        type: 'POST',  // 请求类型为POST
-//        data: {},  // 可选的请求数据
-//        success: function(response) {
-//          // 在成功接收到响应时执行的回调函数
-//          // 更新页面上的数据或执行其他操作
-//        },
-//        error: function(xhr, status, error) {
-//          // 在请求失败时执行的回调函数
-//          }
-//        });
-//      }
-//}
 
 let mainF = (e) => {
 //    for (var i = 0; i < allButtons.length; i++)
@@ -57,3 +41,38 @@ let mainF = (e) => {
 }
 
 window.addEventListener("load", mainF);
+
+$(document).ready(function(){
+      $('#login').click(function(e){
+        e.preventDefault();
+
+        var csrfToken = $('input[name="csrfmiddlewaretoken"]').val(); // 获取CSRF令牌的值
+        var loginName = $('input[name="login_name"]').val();
+        var loginPwd = $('input[name="login_pwd"]').val();
+        var loginUrl = $(this).attr('action');
+
+        $.ajax({
+          url: loginUrl,
+          type: 'POST',
+          headers: {
+          'X-CSRFToken': csrfToken // 将CSRF令牌添加到请求头中
+          },
+          data: {
+          'login_name': loginName,
+          'login_pwd': loginPwd
+          },
+          success: function(response){
+                  if (response.error){
+                  $('#login_message').text(response.error);
+                  } else {
+                  window.alert('登录成功');
+                  window.location.href = '/index/';
+                  }
+
+          },
+          error: function(xhr, status, error) {
+            console.log('请求失败：',error);
+            }
+          });
+        });
+      });
