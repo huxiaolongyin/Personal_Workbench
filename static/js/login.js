@@ -44,7 +44,7 @@ window.addEventListener("load", mainF);
 
 $(document).ready(function(){
       $('#login').click(function(e){
-        e.preventDefault();
+        e.preventDefault(); // 阻止默认的提交功能
 
         var csrfToken = $('input[name="csrfmiddlewaretoken"]').val(); // 获取CSRF令牌的值
         var loginName = $('input[name="login_name"]').val();

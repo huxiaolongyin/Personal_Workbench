@@ -7,7 +7,6 @@ from django.contrib.auth import authenticate, login, logout
 
 def log_in(request):
     # 采用模板的方式
-    print(request.POST)
     if request.method == 'POST':
         if 'register' in request.POST:
             username = request.POST['username']
@@ -52,7 +51,6 @@ def log_in(request):
                 return redirect('/index/')
             else:
                 error_message = '无效的用户名或密码'
-                print(JsonResponse({'error': error_message}))
                 return JsonResponse({'error': error_message})
                 # return render(request, 'login.html', {'error_message2': error_message})
 

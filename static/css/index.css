@@ -64,12 +64,13 @@ a {
   color: var(--dark-font);
   margin-bottom: 32px;
 }
-.item-link {
+.page_button {
   color: var(--light-font);
   margin-bottom: 32px;
   transition: 0.2s;
+  cursor: pointer;
 }
-.item-link.active {
+.page_button.active {
   color: var(--dark-font);
 }
 .btn-logout {
@@ -336,6 +337,7 @@ a {
   height: 16px;
   outline: none;
   cursor: pointer;
+  position: relative; /* 将按钮设置为相对定位 */
 }
 .fixed.main-area-header {
   position: sticky;
@@ -608,3 +610,17 @@ a {
     margin: 0;
   }
 }
+
+.file-manager {
+    width: 200px;
+    height: auto;
+    position: absolute; /* 将文件管理窗口设置为绝对定位 */
+    top: 100%; /* 设置文件管理窗口相对于按钮的垂直位置 */
+    right: 10px; /* 设置文件管理窗口相对于按钮的水平位置 */
+    background-color: #fff;
+    box-shadow: 4px 10px 10px 0 rgba(136, 148, 171, 0.2), 0 24px 20px -24px rgba(71, 82, 107, 0.1);
+    border-radius: 12px;
+    padding: 12px;
+    display: none;
+    table-layout: auto;
+    }
